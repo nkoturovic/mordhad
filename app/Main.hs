@@ -1,7 +1,7 @@
 module Main where
 
-import Lib
+import qualified SerbianAlphabet as SRB
 
 main :: IO ()
 main = do 
-    putStrLn $ cyrToLatin "Здраво свете!!"
+    putStrLn $ SRB.cyrToLatin "Здраво свете!!"

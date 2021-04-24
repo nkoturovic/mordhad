@@ -25,7 +25,7 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      SerbianAlphabet
   other-modules:
       Paths_mordhad
   hs-source-dirs:
