@@ -2,8 +2,8 @@ module SerbianAlphabet
     ( cyrToLatin
     ) where
 
-import Data.List
-import Control.Monad
+import Data.Foldable
+import qualified Data.Vector as VEC
 
 data LatinLetter = One Char 
                  | Two (Char, Char)
@@ -19,8 +19,8 @@ newtype CyrLetter = Cyr Char
 cyrFromChar :: Char -> Maybe CyrLetter
 cyrFromChar c = find (== Cyr c) cyrAlphabet
 
-cyrAlphabet :: [CyrLetter]
-cyrAlphabet = 
+cyrAlphabet :: VEC.Vector CyrLetter
+cyrAlphabet = VEC.fromList
     [Cyr 'а', Cyr 'б', Cyr 'в', Cyr 'г', Cyr 'д',
      Cyr 'ђ', Cyr 'е', Cyr 'ж', Cyr 'з', Cyr 'и',
      Cyr 'ј', Cyr 'к', Cyr 'л', Cyr 'љ', Cyr 'м', 
@@ -34,8 +34,8 @@ cyrAlphabet =
      Cyr 'С', Cyr 'Т', Cyr 'Ћ', Cyr 'У', Cyr 'Ф', 
      Cyr 'Х', Cyr 'Ц', Cyr 'Ч', Cyr 'Џ', Cyr 'Ш']
 
-latinAlphabet :: [LatinLetter]
-latinAlphabet = 
+latinAlphabet :: VEC.Vector LatinLetter
+latinAlphabet = VEC.fromList
     [ One 'a', One 'b', One 'v', One 'g', One 'd',
       One 'đ', One 'e', One 'ž', One 'z', One 'i', 
       One 'j', One 'k', One 'l', Two ('l', 'j'), One 'm', 
@@ -50,9 +50,9 @@ latinAlphabet =
       One 'H', One 'C', One 'Č', Two ('D', 'ž'), One 'Š']
 
 cyrToLatinLetter :: CyrLetter -> LatinLetter
-cyrToLatinLetter (Cyr c) = case Cyr c `elemIndex` cyrAlphabet of
+cyrToLatinLetter (Cyr c) = case Cyr c `VEC.elemIndex` cyrAlphabet of
               Nothing -> One c
-              Just idx -> latinAlphabet !! idx
+              Just idx -> latinAlphabet VEC.! idx
 
 cyrToLatin :: String -> String 
 cyrToLatin = concatMap $
