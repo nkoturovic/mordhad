@@ -8,7 +8,7 @@ import Data.Semigroup ((<>))
 import qualified SerbianAlphabet as SRB
 
 data Options = Options
-  { optoLatin :: Bool
+  { optCyrToLatin :: Bool
   , optLatinToAscii :: Bool 
   , optOutFile :: String 
   , optInFile :: String }
