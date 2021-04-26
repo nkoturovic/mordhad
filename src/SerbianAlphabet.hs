@@ -73,9 +73,9 @@ cyrToLatin = concatMap $
 
 latinAsciiPairs :: VEC.Vector (LatinLetter, Either Char (Char, Char))
 latinAsciiPairs = VEC.fromList 
-    [(One 'đ', Right ('d', 'j')), (One 'Đ', Right ('D', 'J')), (One 'ž', Left 'z'), (One 'Ž', Left 'Ž'),
+    [(One 'đ', Right ('d', 'j')), (One 'Đ', Right ('D', 'J')), (One 'ž', Left 'z'), (One 'Ž', Left 'Z'),
      (One 'ć', Left 'c'), (One 'Ć', Left 'C'), (One 'č', Left 'c'), (One 'Č', Left 'C'), (Two ('d', 'ž'), 
-     Right ('d', 'z')), (Two ('D', 'Ž'), Right ('D', 'Z')), (One 'š', Left 'š'), (One 'Š', Left 'Š')]
+     Right ('d', 'z')), (Two ('D', 'Ž'), Right ('D', 'Z')), (One 'š', Left 's'), (One 'Š', Left 'S')]
 
 latinLetterToAsciiForm :: LatinLetter -> Either Char (Char, Char)
 latinLetterToAsciiForm c = 
