@@ -51,6 +51,6 @@ main = do
 
     let outFn = if optOutFile options /= "" 
                     then writeFile $ optOutFile options
-                    else putStrLn
+                    else putStr
 
     outFn $ transform input
